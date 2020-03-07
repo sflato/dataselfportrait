@@ -397,7 +397,7 @@ function imgTimer() {
   clearInterval(timer);
 }
 
-var timer2 = setInterval(randomimagepicker, 200);
+var timer2 = setInterval(randomimagepicker, 900);
 
 function randomimagepicker() {
   //row1
@@ -458,8 +458,8 @@ function randomimagepicker() {
   // first step is to give each photo an independednt id
 }
 
-pageScroll();
-function pageScroll() {
-    window.scrollBy(0,1);
-    scrolldelay = setTimeout(pageScroll,10);
-}
+// pageScroll();
+// function pageScroll() {
+//     window.scrollBy(0,1);
+//     scrolldelay = setTimeout(pageScroll,10);
+// }
