@@ -4,11 +4,15 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <script src="selfportrait.js"></script>
-
+    <script src="../js/objectdetect.js"></script>
+    <script src="../js/objectdetect.frontalface.js"></script>
+    <script src="../js/objectdetect.profileface.js"></script>
+    <script src="../js/objectdetect.mouth.js"></script>
+    <script src="../js/objectdetect.eye.js"></script>
     <title></title>
   </head>
   <script type="text/javascript">
-  //let timer3 = setInterval(divMaker, 500);
+  let timer3 = setInterval(divMaker, 500);
 
   function divMaker() {
 
@@ -44,6 +48,9 @@
     }
     clearInterval(timer3);
   }
+
+
+
   </script>
 
 
@@ -52,4 +59,5 @@
 
     <div class="wrapper" id="grid">
     </div>
+
 </html>

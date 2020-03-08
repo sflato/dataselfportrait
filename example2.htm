@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Image Example</title>
+
+	<script src="../js/objectdetect.js"></script>
+	<script src="../js/objectdetect.frontalface.js"></script>
+	<script src="../js/objectdetect.profileface.js"></script>
+	<script src="../js/objectdetect.mouth.js"></script>
+	<script src="../js/objectdetect.eye.js"></script>
+
+	<script>
+	setTimeout(function() {
+		var timer = setInterval(imgTimer, 1000);
+
+		let eyes = 20;
+		let eyesarr = [];
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
+		var size = 800;
+		var detector;
+		var classifier = objectdetect.frontalface;
+
+		for(let i=1; i<=eyes; i++) {
+	    eyesarr.push("sp/eyes/"+"eye"+i.toString()+".jpeg");
+	  }
+
+		function detectFaces(canvas) {
+			// Detect faces in the image:
+			var rects = detector.detect(canvas);
+
+			// Draw rectangles around detected faces:
+			for (var i = 0; i < rects.length; ++i) {
+				var coord = rects[i];
+				context.beginPath();
+				context.lineWidth = '' + coord[4] * 50;
+				context.strokeStyle = 'rgba(0, 255, 0, .75)';
+				context.rect(coord[0], coord[1], coord[2], coord[3]);
+				context.stroke();
+			}
+		}
+
+		function loadImage(src) {
+			image = new Image();
+			image.onload = function() {
+				canvas.width = ~~(size * image.width / image.height);
+				canvas.height = ~~(size);
+				canvas.getContext('2d').drawImage(image, 0, 0, 600, 600);
+				detector = new objectdetect.detector(canvas.width, canvas.height, 1.2, classifier);
+				detectFaces(canvas);
+			}
+
+			image.src = src;
+		}
+
+		function imgTimer () {
+			loadImage(eyesarr[Math.floor(Math.random() * eyesarr.length)]);
+		};
+		//
+	}, 1000);
+    </script>
+</head>
+
+<body>
+  <div class="">
+    <canvas id="canvas"></canvas>
+  </div>
+
+</script>
+</body>
+</html>

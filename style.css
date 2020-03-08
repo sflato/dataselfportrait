@@ -1,5 +1,5 @@
 .wrapper{
-  z-index: 9999;
+  z-index: -9999;
   display: grid;
   grid-template-columns: repeat(5, 0fr);
   position: fixed;
